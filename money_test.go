@@ -34,7 +34,6 @@ func Test_Encode_Decode(t *testing.T) {
 		err := json.Unmarshal(test.in, testPrice)
 		if err != nil && !test.badFloat {
 			t.Error(err)
-			t.FailNow()
 		}
 		if int64(testPrice.Price) != test.storedPrice && !test.badFloat {
 			t.Errorf("Extracted incorrect price")
