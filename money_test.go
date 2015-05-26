@@ -1,6 +1,7 @@
 //todo: add test with json
 package money
 
+import "testing"
 /*
 [
  {
