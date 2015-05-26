@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"math"
 	"fmt"
+	"errors"
 )
 
 //TODO: add doc
@@ -19,7 +20,7 @@ var (
 func (m *Money) UnmarshalJSON(data []byte) error {
 	val, err := strconv.ParseFloat(string(data),64)
 	if err != nil {
-		return err
+		return errors.New("Money.UnmarshalJSON : " + err.Error())
 	}
 	*m = Money(round(val)*100)
 	return nil
