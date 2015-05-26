@@ -11,3 +11,8 @@ package money
  },
 ] 
 */
+
+func Test_Encode(t *testing.T) {
+  money := new(Money)
+  print(money)
+}
