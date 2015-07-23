@@ -39,10 +39,11 @@ func (m Money) Float64() float64 {
 }
 
 func FromFloat64(v float64) Money {
+	pow := math.Pow(10, float64(places))
 	if v >= 0 {
-		return Money(v * 100 + 0.5)
+		return Money(v * pow + 0.5)
 	} else {
-		return Money(v * 100 - 0.5)
+		return Money(v * pow - 0.5)
 	}
 }
 
