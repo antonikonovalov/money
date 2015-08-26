@@ -25,8 +25,8 @@ func Test_Encode_Decode(t *testing.T) {
 		{[]byte(`{"price":99.999}`), []byte(`{"price":99.9990}`), 999990, false},
 		{[]byte(`{"price":99.99}`), []byte(`{"price":99.9900}`), 999900, false},
 		{[]byte(`{"price":255.654}`), []byte(`{"price":255.6540}`), 2556540, false},
-		{[]byte(`{"price":"$$$"}`), []byte(`{"price":32.01}`), 3201, true},
-		{[]byte(`{"price":"32,01"}`), []byte(`{"price":32.01}`), 3201, true},
+		{[]byte(`{"price":"$$$"}`), []byte(`{"price":32.0100}`), 3201, true},
+		{[]byte(`{"price":"32,01"}`), []byte(`{"price":32.0100}`), 3201, true},
 	}
 
 	for _, test := range tests {
