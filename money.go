@@ -8,21 +8,21 @@ import (
 )
 
 //TODO: add doc
-// Хранит деньги как Int, возвращает деленные на 100
+// Хранит деньги как Int, возвращает деленные на 10000
 type Money int64
 
 var (
 	roundOn float64 = 0.5
-	places int = 2
+	places int = 4
 )
 
 //todo: add json/decode/encode
 func (m *Money) UnmarshalJSON(data []byte) error {
-	val, err := strconv.ParseFloat(string(data),64)
+	val, err := strconv.ParseFloat(string(data), 64)
 	if err != nil {
 		return errors.New("Money.UnmarshalJSON : " + err.Error())
 	}
-	*m = Money(round(val)*100)
+	*m = Money(round(val) * 10000)
 	return nil
 }
 
@@ -31,11 +31,11 @@ func (m Money) MarshalJSON() ([]byte, error) {
 }
 
 func (m Money) String() string {
-	return fmt.Sprintf("%0.2f", m.Float64())
+	return fmt.Sprintf("%0.4f", m.Float64())
 }
 
 func (m Money) Float64() float64 {
-	return float64(m) / 100
+	return float64(m) / 10000
 }
 
 func FromFloat64(v float64) Money {
